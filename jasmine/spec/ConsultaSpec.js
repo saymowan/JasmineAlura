@@ -15,13 +15,19 @@ describe ("Consulta", function(){
 
 	});
 
+
 	it("deve cobrar especificamente por procedimento", function(){
 		var paciente  = new Paciente("Saymon", 24,88,1.78);
 		var consulta  = new Consulta(paciente,["raio-x","procedimentox"], false, false);
-
 		expect(consulta.preco()).toEqual(55 + 25);
+	});
 
 
+	it("deve cobrar o dobro se a consulta for particular", function(){
+		var paciente = new Paciente("Saymon 2", 24, 98, 1.90);
+		var consulta = new Consulta(paciente, ["raio-x"], true, false)
+
+		expect(consulta.preco()).toEqual(55*2);
 	});
 
 
